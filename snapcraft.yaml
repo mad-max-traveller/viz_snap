@@ -1,36 +1,40 @@
 name: vizd
-version: '2.0.2.1'
-summary: Seed node for VIZ network
+version: '2.2.0'
+summary: Full node for VIZ network
 description: |
-  Seed node for support VIZ network
+  DAO (decentralized autonomous organization), where the blockchain itself is managed by the holders of shares
 
-grade: devel
-confinement: devmode
+grade: stable
+confinement: strict
 
 apps:
   vizd:
-    command: bin/vizd -d '$SNAP_USER_DATA'/witness_node_data_dir --resync
+    command: bin/vizd -d '$SNAP_USER_DATA'/witness_node_data_dir --resync-blockchain
     plugs:
       - network
       - home
+      - network-bind
 
   vizd-rb:
     command: bin/vizd -d '$SNAP_USER_DATA'/witness_node_data_dir --replay-blockchain
     plugs:
       - network
       - home
+      - network-bind
 
   vizd-rc:
     command: bin/vizd -d '$SNAP_USER_DATA'/witness_node_data_dir --replay-if-corrupted
     plugs:
       - network
       - home
+      - network-bind
 
   vizd-wallet:
     command: bin/cli_wallet -d '$SNAP_USER_DATA'/wallet --resync
     plugs:
       - network
       - home
+      - network-bind
 
 parts:
   viz:
@@ -40,7 +44,7 @@ parts:
 
     override-pull: |
        git clone https://github.com/VIZ-World/viz-world.git .
-       git checkout mainnet-dev
+       git checkout master
        git submodule update --init --recursive
 
     build-packages:
