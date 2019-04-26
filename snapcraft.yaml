@@ -44,7 +44,7 @@ parts:
 
     override-pull: |
        git clone https://github.com/VIZ-World/viz-world.git .
-       git checkout master
+       git checkout dev-hf7
        git submodule update --init --recursive
 
     build-packages:
