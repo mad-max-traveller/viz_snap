@@ -1,5 +1,5 @@
 name: vizd
-version: '2.3.0'
+version: '2.3.0.1'
 summary: Full node for VIZ network
 description: |
   DAO (decentralized autonomous organization), where the blockchain itself is managed by the holders of shares
