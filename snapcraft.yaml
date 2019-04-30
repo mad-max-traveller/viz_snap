@@ -5,7 +5,7 @@ description: |
   DAO (decentralized autonomous organization), where the blockchain itself is managed by the holders of shares
 
 grade: stable
-confinement: devmode
+confinement: strict
 
 apps:
   vizd:
@@ -44,7 +44,7 @@ parts:
 
     override-pull: |
        git clone https://github.com/VIZ-World/viz-world.git .
-       git checkout dev-hf7
+       git checkout dev-hf8
        git submodule update --init --recursive
 
     build-packages:
